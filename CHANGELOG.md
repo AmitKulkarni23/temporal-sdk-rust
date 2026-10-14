@@ -38,6 +38,10 @@ relevant information.
   differs from the command that produced it.
 
 ### Fixed
+* `temporal.api.sdk.v1` messages are capable of serialization to proto JSON, so their JSON field
+  names are camel case rather than snake case and the binary encoding is unchanged. They previously
+  could not be deserialized from the camel case that other Temporal SDKs and protobuf tools emit,
+  and both spellings are now accepted.
 * `Worker::run()` now waits for spawned activity tasks to finish before returning, including
   when running fails.
 * Workers using a custom metrics backend now report task-slot and poller counts correctly in
