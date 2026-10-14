@@ -55,6 +55,14 @@ relevant information.
 * Workers now replay workflows paused before a scheduled task starts, allowing those workflows to
   make progress after unpause.
 
+### Added
+* The OTLP metrics exporter can export histograms as OpenTelemetry exponential histograms, which
+  Prometheus-compatible backends store as native histograms, when an SDK enables the option,
+  including through the C bridge. It applies to every histogram, including custom ones, and names
+  each series with a suffix, `_native` by default, so it never shares a name with the fixed-bucket
+  series it replaces. It cannot be combined with histogram bucket overrides. Explicit buckets
+  remain the default.
+
 ## [0.10.0] - 2026-10-06
 
 ### Added
